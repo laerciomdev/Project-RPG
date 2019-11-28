@@ -23,7 +23,7 @@ p,div{
 .perfilMovel{
     background-color:beige;
     text-align: center; 
-    height: 330px;
+    height: 375px;
     width: 109px;
     border-radius: 5px;
     border:1px solid ;
@@ -36,11 +36,5 @@ p,div{
     border-radius: 5px;
     border:2px solid;
     align-content: center;
-}
-
-.postFeed1{
-    width: 340px;
-    height: 220px;
-    border-radius: 2px;
-    align-content: center;
+    text-align: center;
 }
