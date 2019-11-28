@@ -7,7 +7,7 @@
     </head>
     <body class="fundo" background="./imagens/fundo.jpg">
         <header class="perfilMovel">
-            <img src="./imagens/user.png"<br><br><br>
+            <img src="./imagens/user.png"><br><br><br>
             <a href="perfil.php">Perfil</a><br><br>
             <a href="">RPG favorito</a><br><br>
             <a href="">Amigos</a><br><br>

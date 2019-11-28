@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Nov-2019 às 01:10
--- Versão do servidor: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Tempo de geração: 28-Nov-2019 às 17:17
+-- Versão do servidor: 10.4.6-MariaDB
+-- versão do PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projeto`
+-- Banco de dados: `projeto`
 --
 
 -- --------------------------------------------------------
@@ -29,40 +29,40 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `usuarios` (
-  `id` int(200) NOT NULL,
-  `login` varchar(200) NOT NULL,
-  `senha` varchar(200) NOT NULL,
+  `id` int(10) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `cpf` varchar(200) NOT NULL,
   `nome` varchar(200) NOT NULL,
-  `sobrenome` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL
+  `informacoes` varchar(200) DEFAULT NULL,
+  `jogofavorito` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `login`, `senha`, `nome`, `sobrenome`, `email`) VALUES
+INSERT INTO `usuarios` (`id`, `email`, `cpf`, `nome`, `informacoes`, `jogofavorito`) VALUES
 (1, 'carloseduardozero0@gmail.com', '123', 'Carlos', 'eduardo', 'carloseduardobahia@hotmail.com');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
