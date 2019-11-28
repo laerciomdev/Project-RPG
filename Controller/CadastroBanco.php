@@ -34,6 +34,4 @@ $logarray = $array['login'];
           .href='cadastro.html'</script>";
         }
       }
-    }
-?>
 
