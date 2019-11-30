@@ -1,3 +1,48 @@
+<?php
+
+
+require_once "./Controller/conexao.php";
+
+/*  $_FILES["file"]["name"];
+
+    $_UP["pasta"] =                "./imagens/perfil/";
+    $_UP["tamanho"] =                    1024*1024*100;
+    $_UP["extensao"] = array("png","jpg","jpeg","gif");
+    $_UP["renomeia"] =                           false;
+*/
+
+
+$extensoes_padrao = array("png","jpg","jpeg","gif");
+
+  if(isset($_FILES['file'])){
+    $extensao = explode(".", $_FILES['file']['name'])[1];
+
+
+    if(in_array($extensao, $extensoes_padrao)){
+      $diretorio = "./imagens/perfil/";
+      $novo_nome = md5(time()).extensao;
+
+
+      move_uploaded_file($_FILES['file']['tmp_name'], $diretorio,$novo_nome);
+
+    $query = $con->prepare("INSERT INTO usuarios(email,cpf,nome,informacoes,jogofavorito)
+     VALUES (:email,:cpf,:nome,:informacoes,:jogo)");
+
+
+    $query-> bindValue(":email",$Email);
+    $query-> bindValue(":cpf",$Cpf);
+    $query-> bindValue(":nome",$Nome);
+    $query-> bindValue(":informacoes",$Informacoes);
+    $query-> bindValue(":jogo",$Jogo);
+
+    $query->execute();
+    }
+  }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,7 +56,12 @@
 
 
   <div class="imagem-perfil">
-    <img src="./imagens/user.png">
+  
+  <form action="" enctype="multipart/form-data" method="post">
+      <img src="./imagens/perfil/user.png">
+      <input type="file" name="file" enctype="multipart/form-data">
+      <input type="submit" value="Enviar">
+      </form>
   </div>
   
   <div class="perfil">
@@ -30,7 +80,7 @@
 
   <div class="informacoes">
     <label for="cpf">cpf:</label>
-    <input type="number" disabled placeholder="cpf" id="cpf">
+    <input type="text" disabled placeholder="cpf" id="cpf">
     <label for="email">Email:</label>
     <input type="text" disabled placeholder="Email" id="email">
     <select name="jogos" id="jogos">
