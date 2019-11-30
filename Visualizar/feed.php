@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -14,7 +18,7 @@
             <a href="">Comunidades</a><br><br>
             <a href="">Area de criador</a><br><br>
             <a href="">Configurações</a><br><br>
-            <a href="index.php">Sair</a><br><br>
+            <a href="View/index.php">Sair</a><br><br>
         </header>
         
         <div class="feed1">

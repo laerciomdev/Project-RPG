@@ -14,24 +14,43 @@ $user = new Usuario();
     $Cpf =          filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_SPECIAL_CHARS);
     $Jogo =       filter_input(INPUT_POST, 'Jogos', FILTER_SANITIZE_SPECIAL_CHARS);
 
+
+    //Caso as informações sejam default será atribuido um novo valor
     if($Informacoes == ""){
       $Informacoes = "Nenhuma informação...";
     }
 
+    //Criação da sessão com os valores informados pelo usuario
+    session_start();
 
+    $_SESSION['nome'] =               $Nome;
+    $_SESSION['email'] =             $Email;
+    $_SESSION['informacoes'] = $Informacoes;
+    $_SESSION['cpf'] =                 $Cpf;
+    $_SESSION['jogo'] =               $Jogo;
+
+    /*Criação dos cookies, o que está entre aspas é o nome do cookie
+    setcookie('nome', $Nome,               time()+3600);
+    setcookie("email", $Email,             time()+3600);
+    setcookie("informacoes", $Informacoes, time()+3600);
+    setcookie("cpf", $Cpf,                 time()+3600);
+    setcookie("jogo", $Jogo,               time()+3600);
+    */
+
+
+    //Envio das informações pelo objeto
     $user->               setNome($Nome);
     $user->                 setCpf($Cpf);
     $user->             setEmail($Email);
     $user-> setInformacoes($Informacoes);
     $user->               setJogo($Jogo);
 
-    
-    $Nome = $user->        getNome();
-    $Cpf = $user->        getCpf();
-    $Email = $user->getEmail();
-    $Informacoes = $user->  getInformacoes();
-    $Jogo = $user->        getJogo();
-
+    //resgate das informações pelo objeto    
+    $Nome =               $user->getNome();
+    $Cpf =                 $user->getCpf();
+    $Email =             $user->getEmail();
+    $Informacoes = $user->getInformacoes();
+    $Jogo =               $user->getJogo();
 
     $query = $con->prepare("INSERT INTO usuarios(email,cpf,nome,informacoes,jogofavorito)
      VALUES (:email,:cpf,:nome,:informacoes,:jogo)");
@@ -44,3 +63,6 @@ $user = new Usuario();
     $query-> bindValue(":jogo",$Jogo);
 
     $query->execute();
+
+
+    header("location: ../Visualizar/feed.php");
