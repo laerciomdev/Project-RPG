@@ -13,19 +13,17 @@
         <header class="perfilMovel"><br>
             <img src="./imagens/user.png"><br><br><br>
             <a href="perfil.php">Perfil</a><br><br>
-            <a href="">RPG favorito</a><br><br>
             <a href="">Amigos</a><br><br>
-            <a href="">Comunidades</a><br><br>
-            <a href="">Area de criador</a><br><br>
             <a href="">Configurações</a><br><br>
             <a href="View/index.php">Sair</a><br><br>
         </header>
         
         <div class="feed1">
             <h2 class="fonteFeed">O que deseja postar?</h2>
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <input type="text" width="320" height="240" name="Postagem" required=""><br><br>
-                <input type="submit" value="Postar">    
+                <input type="file" name="arquivos"
+                 <input type="submit" value="Postar">    
             </form>
         </div>
         <div id="fb-root"></div>
