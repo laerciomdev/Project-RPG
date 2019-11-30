@@ -1,3 +1,12 @@
+<?php 
+
+
+//Limpeza e destruição da sessão
+  session_start();
+  session_unset();
+session_destroy();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>

@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -14,7 +18,7 @@
             <a href="">Comunidades</a><br><br>
             <a href="">Area de criador</a><br><br>
             <a href="">Configurações</a><br><br>
-            <a href="index.php">Sair</a><br><br>
+            <a href="View/index.php">Sair</a><br><br>
         </header>
         
         <div class="feed1">
@@ -24,5 +28,13 @@
                 <input type="submit" value="Postar">    
             </form>
         </div>
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     </body>
 </html>

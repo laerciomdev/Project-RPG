@@ -6,14 +6,17 @@
     </head>
     <body>
     <center>
-        <form method="POST" action="../Controller/CadastroBanco.php">
-            Seu nome: <input type="text" name="nome" placeholder="ex. Anderson" required=""><br>
-            sobrenome: <input type="text" name="sobrenome" placeholder="ex. Silva" required=""><br>
-            e-mail: <input type="email" name="email" placeholder="exemplo@exemplo.com" required=""><br>
-            telefone: <input type="number" name="" placeholder="(DDD)9 9999-8888" required=""><br>
-            data de nascimento: <input type="date" name="data" required=""><br>
-            usuário: <input type="text" name="login" placeholder="Login" required=""><br>
-            Senha: <input type="password" name="senha" placeholder="Senha" required=""><br>
+        <form method="POST" action="../Controller/validar-cadastro.php">
+            Seu nome: <input type="text" name="nome" placeholder="ex. Anderson" required="">*<br>
+            E-mail: <input type="email" name="email" placeholder="exemplo@exemplo.com" required="">*<br>
+            Informações: <textarea name="info" cols="30" rows="10"></textarea>
+            Jogo favorito: <select name="Jogos" id="jogo">
+                <option value="jogo 1">jogo 1</option>
+                <option value="jogo 2">jogo 2</option>
+                <option value="jogo 3">jogo 3</option>
+                <option value="jogo 4">jogo 4</option>
+            </select>
+            Cpf: <input type="number" name="cpf" placeholder="ex: xxx.xxx.xxx-xx" required="">*<br>
             <input type="submit" value="Cadastrar">
         </form>
         <form method="POST" action="../View/index.php">
