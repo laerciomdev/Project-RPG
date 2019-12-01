@@ -1,16 +1,18 @@
 <?php
-
 session_start();
+
 include_once '../Model/conexao.php';
+
+
 //Verificar se o usuário clicou no botão, clicou no botão acessa o IF e tenta cadastrar, caso contrario acessa o ELSE
-$enviarArquivo = filter_input(INPUT_POST, 'comentario', FILTER_SANITIZE_STRING);
-if ($enviarArquivo) {
+$comentario = filter_input(INPUT_POST, 'comentario', FILTER_SANITIZE_STRING);
+$arquivo = filter_input(INPUT_POST, 'arquivo', FILTER_SANITIZE_STRING);
+if ($comentario && $arquivo) {
     //Receber os dados do formulário
-    $nome = filter_input(INPUT_POST, 'arquivo', FILTER_SANITIZE_STRING);
     $nome_arquivo = $_FILES['arquivo']['name'];
-    //var_dump($_FILES['imagem']);
+    //var_dump($_FILES['arquivo']);
     //Inserir no BD
-    $result_arq = "INSERT INTO arquivos (comentario, arquivo) VALUES (:comentario, :arquivo)";
+    $result_arq = "INSERT INTO post (comentario, arquivo) VALUES (:comentario, :arquivo)";
     $insert_msg = $conn->prepare($result_arq);
     $insert_msg->bindParam(':comentario', $comentario);
     $insert_msg->bindParam(':arquivo', $nome_arquivo);
