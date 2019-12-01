@@ -13,7 +13,7 @@ $user = new Usuario();
     $Informacoes = filter_input(INPUT_POST, 'info', FILTER_SANITIZE_SPECIAL_CHARS);
     $Cpf =          filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_SPECIAL_CHARS);
     $Jogo =       filter_input(INPUT_POST, 'Jogos', FILTER_SANITIZE_SPECIAL_CHARS);
-
+    $Imagem =                                            "imagens\perfil\user.png";
 
     //Caso as informações sejam default será atribuido um novo valor
     if($Informacoes == ""){
@@ -28,6 +28,7 @@ $user = new Usuario();
     $_SESSION['informacoes'] = $Informacoes;
     $_SESSION['cpf'] =                 $Cpf;
     $_SESSION['jogo'] =               $Jogo;
+    $_SESSION['imagem'] =           $Imagem;
 
     /*Criação dos cookies, o que está entre aspas é o nome do cookie
     setcookie('nome', $Nome,               time()+3600);
@@ -52,8 +53,8 @@ $user = new Usuario();
     $Informacoes = $user->getInformacoes();
     $Jogo =               $user->getJogo();
 
-    $query = $con->prepare("INSERT INTO usuarios(email,cpf,nome,informacoes,jogofavorito)
-     VALUES (:email,:cpf,:nome,:informacoes,:jogo)");
+    $query = $con->prepare("INSERT INTO usuarios(email,cpf,nome,informacoes,jogofavorito,diretorio)
+     VALUES (:email,:cpf,:nome,:informacoes,:jogo,:imagem)");
 
 
     $query-> bindValue(":email",$Email);
@@ -65,4 +66,4 @@ $user = new Usuario();
     $query->execute();
 
 
-    header("location: ../Visualizar/feed.php");
+    header("location: ../View/feed.php");

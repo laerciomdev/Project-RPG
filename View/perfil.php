@@ -54,7 +54,7 @@ $extensoes_padrao = array("png","jpg","jpeg","gif");
   <div class="imagem-perfil">
   
   <form action="" enctype="multipart/form-data" method="post">
-      <img src="<?php echo $imagem?>">
+      <img src="<?php echo $imagem ?>">
         <input type="file" name="file" id="file">
       <input type="submit" value="Enviar" id="enviar">
       </form>
