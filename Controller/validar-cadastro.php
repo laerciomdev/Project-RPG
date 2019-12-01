@@ -62,6 +62,7 @@ $user = new Usuario();
     $query-> bindValue(":nome",$Nome);
     $query-> bindValue(":informacoes",$Informacoes);
     $query-> bindValue(":jogo",$Jogo);
+    $query-> bindValue(":imagem",$diretorio)
 
     $query->execute();
 
