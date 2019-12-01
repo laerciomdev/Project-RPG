@@ -17,9 +17,11 @@ $login = $user->getNome();
 $cpf =    $user->getCpf();
 
 
-  $query = $con->prepare("SELECT * FROM usuarios WHERE nome = :nome OR email = :email");
+  $query = $con->prepare("SELECT * FROM usuarios WHERE nome = :nome
+   OR email = :email AND cpf = :cpf");
   $query->bindValue(":nome", $login);
   $query->bindValue(":email", $login);
+  $query->bindValue(":cpf", $cpf);
   $query->execute();
 
 
@@ -27,16 +29,7 @@ $cpf =    $user->getCpf();
                                       //variavel Login*/
   
  //Se voltar alguma coisa vai ser feito o select da senha
- if($query->rowCount() != 0){
 
-  $query = $con->prepare("SELECT * FROM usuarios WHERE cpf = :cpf");
-  $query->bindValue(":cpf", $cpf);
-  $query->execute();
-
-  //se voltar alguma linha será direcionado para o feed se não vai voltar para a pagina index
- }if($query->rowCount() != 0){
-
-        
         //Manipulação de informações que foram retirados do banco
         foreach($query->fetchAll() as $valor){
       
@@ -48,7 +41,6 @@ $cpf =    $user->getCpf();
         $_SESSION['cpf'] =                 $valor['cpf'];
         $_SESSION['jogo'] =       $valor['jogofavorito'];
         $_SESSION["imagem"] =        $valor["diretorio"];
-      }
 
         /*Criação dos cookies, o que está entre aspas é o nome do cookie        
         setcookie("nome", $Nome,               time()+3600);
@@ -60,6 +52,6 @@ $cpf =    $user->getCpf();
 
         header("location: ../View/feed.php");
   
-      }else{
+
     header("location: ../View/index.php");
   }
