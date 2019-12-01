@@ -28,7 +28,7 @@ session_start();
             <h2 class="fonteFeed">O que deseja postar?</h2>
             <form method="POST" action="../Controller/postFeed.php" enctype="multipart/form-data">
                 <input type="text" width="320" height="240" name="comentario" max="1024" required=""><br><br>
-                <input type="file" name="arquivos"><br><br>
+                <input type="file" name="arquivo"><br><br>
                 <input type="submit" value="Postar">    
             </form><br>
             <?php
