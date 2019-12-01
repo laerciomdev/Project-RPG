@@ -89,6 +89,7 @@ $extensoes_padrao = array("png","jpg","jpeg","gif");
 
     <label for="sobre">Um pouco sobre você:</label>
     <textarea name="sobre" id="sobre" cols="30" rows="10"></textarea>
+    <a href="feed.php">voltar</a>
   </div>
   
 </body>

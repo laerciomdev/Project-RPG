@@ -42,9 +42,7 @@ p,div{
 }
 
 .perfilMovel img, .imagem-perfil img{
-  max-width:64px;
-  max-height:64px;
-  border-radius: 64px;
-  width: auto;
-  height: auto;
+  width:64px;
+  height:64px;
+  border-radius: 32px;
 }
