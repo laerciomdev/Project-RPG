@@ -1,7 +1,7 @@
 <?php
 
-require_once "conexao.php";
-require_once "../ModelDAO/Usuario.php";
+require_once "../Model/conexao.php";
+require_once "../Model/Usuario.php";
 
 
 $con =   getConexao();

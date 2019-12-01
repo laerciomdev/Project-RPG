@@ -1,16 +1,16 @@
 <?php
+require_once "../Model/conexao.php";
 
 
-require_once "./Controller/conexao.php";
+session_start();
+  if(!isset($_SESSION['cpf'])){
+    header("location: index.php");
+  }
+$imagem = $_SESSION["imagem"];
+$cpf =       $_SESSION['cpf'];
 
-/*  $_FILES["file"]["name"];
 
-    $_UP["pasta"] =                "./imagens/perfil/";
-    $_UP["tamanho"] =                    1024*1024*100;
-    $_UP["extensao"] = array("png","jpg","jpeg","gif");
-    $_UP["renomeia"] =                           false;
-*/
-
+$con = getConexao();
 
 $extensoes_padrao = array("png","jpg","jpeg","gif");
 
@@ -20,22 +20,18 @@ $extensoes_padrao = array("png","jpg","jpeg","gif");
 
     if(in_array($extensao, $extensoes_padrao)){
       $diretorio = "./imagens/perfil/";
-      $novo_nome = md5(time()).extensao;
+      $novo_nome = md5(time()).".".$extensao;
+      $imagem = $diretorio.$novo_nome;
+
+      move_uploaded_file($_FILES['file']['tmp_name'], $diretorio.$novo_nome);
 
 
-      move_uploaded_file($_FILES['file']['tmp_name'], $diretorio,$novo_nome);
-
-    $query = $con->prepare("INSERT INTO usuarios(email,cpf,nome,informacoes,jogofavorito)
-     VALUES (:email,:cpf,:nome,:informacoes,:jogo)");
-
-
-    $query-> bindValue(":email",$Email);
-    $query-> bindValue(":cpf",$Cpf);
-    $query-> bindValue(":nome",$Nome);
-    $query-> bindValue(":informacoes",$Informacoes);
-    $query-> bindValue(":jogo",$Jogo);
-
+    $query = $con->prepare("UPDATE usuarios SET diretorio=:imagem WHERE cpf = :cpf");
+    $query-> bindValue(":imagem",$imagem);
+    $query-> bindValue(":cpf",$cpf);
     $query->execute();
+
+    $_SESSION["imagem"] = $imagem;
     }
   }
 
@@ -58,9 +54,9 @@ $extensoes_padrao = array("png","jpg","jpeg","gif");
   <div class="imagem-perfil">
   
   <form action="" enctype="multipart/form-data" method="post">
-      <img src="./imagens/perfil/user.png">
-      <input type="file" name="file" enctype="multipart/form-data">
-      <input type="submit" value="Enviar">
+      <img src="<?php echo $imagem?>">
+        <input type="file" name="file" id="file">
+      <input type="submit" value="Enviar" id="enviar">
       </form>
   </div>
   
@@ -94,5 +90,6 @@ $extensoes_padrao = array("png","jpg","jpeg","gif");
     <label for="sobre">Um pouco sobre você:</label>
     <textarea name="sobre" id="sobre" cols="30" rows="10"></textarea>
   </div>
+  
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 
-require_once "conexao.php";
-require_once "../ModelDAO/Usuario.php";
+require_once "../Model/conexao.php";
+require_once "../Model/Usuario.php";
 
 
 $con =   getConexao();
@@ -34,7 +34,7 @@ $cpf =    $user->getCpf();
   $query->execute();
 
   //se voltar alguma linha será direcionado para o feed se não vai voltar para a pagina index
-  if($query->rowCount() != 0){
+ }if($query->rowCount() != 0){
 
         
         //Manipulação de informações que foram retirados do banco
@@ -42,11 +42,12 @@ $cpf =    $user->getCpf();
       
         session_start();
 
-        $_SESSION['nome'] =        $valor['nome'];
-        $_SESSION['email'] =       $valor['email'];
+        $_SESSION['nome'] =               $valor['nome'];
+        $_SESSION['email'] =             $valor['email'];
         $_SESSION['informacoes'] = $valor['informacoes'];
-        $_SESSION['cpf'] =         $valor['cpf'];
-        $_SESSION['jogo'] =        $valor['jogofavorito'];
+        $_SESSION['cpf'] =                 $valor['cpf'];
+        $_SESSION['jogo'] =       $valor['jogofavorito'];
+        $_SESSION["imagem"] =        $valor["diretorio"];
       }
 
         /*Criação dos cookies, o que está entre aspas é o nome do cookie        
@@ -62,5 +63,3 @@ $cpf =    $user->getCpf();
       }else{
     header("location: ../View/index.php");
   }
- 
-}
