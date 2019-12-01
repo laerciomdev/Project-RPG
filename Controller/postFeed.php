@@ -23,7 +23,7 @@ if ($comentario && $arquivo) {
         $ultimo_id = $conn->lastInsertId();
 
         //Diretório onde o arquivo vai ser salvo
-        $diretorio = '../View/posts' . $ultimo_id.'/';
+        $diretorio = "../View/posts/".$ultimo_id;
 
         //Criar a pasta de foto 
         mkdir($diretorio, 0755);
