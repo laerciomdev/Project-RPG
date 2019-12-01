@@ -65,4 +65,4 @@ $user = new Usuario();
     $query->execute();
 
 
-    header("location: ../Visualizar/feed.php");
+    header("location: ../View/feed.php");

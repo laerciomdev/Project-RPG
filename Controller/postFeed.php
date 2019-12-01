@@ -3,17 +3,17 @@
 session_start();
 include_once '../Model/conexao.php';
 //Verificar se o usuário clicou no botão, clicou no botão acessa o IF e tenta cadastrar, caso contrario acessa o ELSE
-$SendCadImg = filter_input(INPUT_POST, 'SendCadImg', FILTER_SANITIZE_STRING);
-if ($SendCadImg) {
+$enviarArquivo = filter_input(INPUT_POST, 'comentario', FILTER_SANITIZE_STRING);
+if ($enviarArquivo) {
     //Receber os dados do formulário
-    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-    $nome_imagem = $_FILES['imagem']['name'];
+    $nome = filter_input(INPUT_POST, 'arquivo', FILTER_SANITIZE_STRING);
+    $nome_arquivo = $_FILES['arquivo']['name'];
     //var_dump($_FILES['imagem']);
     //Inserir no BD
-    $result_img = "INSERT INTO imagens (nome, imagem) VALUES (:nome, :imagem)";
-    $insert_msg = $conn->prepare($result_img);
-    $insert_msg->bindParam(':nome', $nome);
-    $insert_msg->bindParam(':imagem', $nome_imagem);
+    $result_arq = "INSERT INTO arquivos (comentario, arquivo) VALUES (:comentario, :arquivo)";
+    $insert_msg = $conn->prepare($result_arq);
+    $insert_msg->bindParam(':comentario', $comentario);
+    $insert_msg->bindParam(':arquivo', $nome_arquivo);
 
     //Verificar se os dados foram inseridos com sucesso
     if ($insert_msg->execute()) {
@@ -21,16 +21,16 @@ if ($SendCadImg) {
         $ultimo_id = $conn->lastInsertId();
 
         //Diretório onde o arquivo vai ser salvo
-        $diretorio = 'imagens/' . $ultimo_id.'/';
+        $diretorio = '../View/posts' . $ultimo_id.'/';
 
         //Criar a pasta de foto 
         mkdir($diretorio, 0755);
         
-        if(move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$nome_imagem)){
-            $_SESSION['msg'] = "<p style='color:green;'>Dados salvo com sucesso e upload da imagem realizado com sucesso</p>";
+        if(move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$nome_arquivo)){
+            $_SESSION['msg'] = "<p style='color:green;'>Dados salvo com sucesso e upload do arquivo realizado com sucesso</p>";
             header("Location: ../View/feed.php");
         }else{
-            $_SESSION['msg'] = "<p><span style='color:green;'>Dados salvo com sucesso. </span><span style='color:red;'>Erro ao realizar o upload da imagem</span></p>";
+            $_SESSION['msg'] = "<p><span style='color:green;'>Dados salvo com sucesso. </span><span style='color:red;'>Erro ao realizar o upload do arquivo</span></p>";
             header("Location: ../View/feed.php");
         }        
     } else {
