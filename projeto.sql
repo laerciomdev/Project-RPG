@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Dez-2019 às 19:11
--- Versão do servidor: 10.4.6-MariaDB
--- versão do PHP: 7.3.8
+-- Generation Time: 02-Dez-2019 às 11:57
+-- Versão do servidor: 10.1.38-MariaDB
+-- versão do PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,32 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `projeto`
+-- Database: `projeto`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `imagens`
---
-
-CREATE TABLE `imagens` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(220) COLLATE utf8_unicode_ci NOT NULL,
-  `imagem` varchar(220) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `imagens`
---
-
-INSERT INTO `imagens` (`id`, `nome`, `imagem`) VALUES
-(1, 'Teste 1', 'cinco.png'),
-(2, 'w', ''),
-(3, 'wwwwwwwww', '001.jpg'),
-(4, '', 'FireShot Capture 003 - preconseito - .png'),
-(5, 'test', 'FireShot Capture 003 - preconseito - .png'),
-(6, 'ttttttttttttt', 'Fenix.jpeg');
 
 -- --------------------------------------------------------
 
@@ -58,6 +34,14 @@ CREATE TABLE `post` (
   `comentario` varchar(1024) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `post`
+--
+
+INSERT INTO `post` (`idPost`, `arquivo`, `comentario`) VALUES
+(1, '../View/imagens/arquivos/7131b7d183da8f9ae27f337d1ca4e0d8.jpg', 'a'),
+(2, '../View/imagens/arquivos/c5b0a49b2f4f3baf63c0042354558d82.jpg', 'a');
+
 -- --------------------------------------------------------
 
 --
@@ -70,48 +54,48 @@ CREATE TABLE `usuarios` (
   `cpf` varchar(200) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `informacoes` varchar(200) DEFAULT NULL,
-  `jogofavorito` varchar(200) DEFAULT NULL
+  `jogofavorito` varchar(200) DEFAULT NULL,
+  `diretorio` varchar(250) NOT NULL DEFAULT '../View/imagens/perfil/user.png'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `email`, `cpf`, `nome`, `informacoes`, `jogofavorito`) VALUES
-(1, 'carloseduardozero0@gmail.com', '123', 'Carlos', 'eduardo', 'carloseduardobahia@hotmail.com'),
-(2, 'laerciom99@gmail.com', 'laercio', 'laercio', 'gosto de jogos', 'The Legend of Zelda: Ocarina of time');
+INSERT INTO `usuarios` (`id`, `email`, `cpf`, `nome`, `informacoes`, `jogofavorito`, `diretorio`) VALUES
+(3, 'joanderson@gmail.com', '1', 'joanderson', 'Nenhuma informaÃ§Ã£o...', 'jogo 1', './imagens/perfil/d6837c2ac2aadd2324347fa1458ffff5.jpg');
 
 --
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `post`
+-- Indexes for table `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`idPost`);
 
 --
--- Índices para tabela `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `post`
+-- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `idPost` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de tabela `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
