@@ -54,7 +54,7 @@ $extensoes_padrao = array("png","jpg","jpeg","gif");
   <div class="imagem-perfil">
   
   <form action="" enctype="multipart/form-data" method="post">
-      <img src="<?php echo $imagem ?>">
+      <img src="<?php echo $imagem?>">
         <input type="file" name="file" id="file">
       <input type="submit" value="Enviar" id="enviar">
       </form>
@@ -72,7 +72,7 @@ $extensoes_padrao = array("png","jpg","jpeg","gif");
   </div>
 
   <p class="title">Configurações Gerais</p>
-  <p>Gerencie os detalhes da conta que você compartilhou conosco</p>
+  <p class="p1">Gerencie os detalhes da conta que você compartilhou conosco</p>
 
   <div class="informacoes">
     <label for="cpf">cpf:</label>
@@ -89,7 +89,6 @@ $extensoes_padrao = array("png","jpg","jpeg","gif");
 
     <label for="sobre">Um pouco sobre você:</label>
     <textarea name="sobre" id="sobre" cols="30" rows="10"></textarea>
-    <a href="feed.php">voltar</a>
   </div>
   
 </body>

@@ -13,7 +13,7 @@ session_start();
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="./estilo/style.css">
+        <link rel="stylesheet" href="./estilo/est.css">
         <title>Feed</title>
     </head>
     <body class="fundo" background="./imagens/fundo.jpg">
